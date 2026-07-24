@@ -56,3 +56,16 @@ def find_by_name(product_name):
             row[3]
         )
     return products            
+
+def show_all_base():
+    cur.execute('''SELECT * FROM product''')
+    products = []
+    for row in cur:
+        product = Product(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )
+        products.append(product)
+    return products

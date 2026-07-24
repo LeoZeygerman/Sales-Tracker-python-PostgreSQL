@@ -1,4 +1,4 @@
-from database import add_product_base, find_by_id, find_by_name
+from database import add_product_base, find_by_id, find_by_name, show_all_base
 from models import Product
 def add_product():
     name = input('Введите название продукта: ')
@@ -20,4 +20,9 @@ def find_product():
     elif choice == 2:
         product_name = input('Введите название продукта: ')
         products = find_by_name(product_name)
+        products.find_product_models()
+        
+def show_all():
+    product = show_all_base()
+    for products in product:
         products.find_product_models()

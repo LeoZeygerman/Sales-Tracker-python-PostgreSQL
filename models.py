@@ -9,4 +9,5 @@ class Product:
         print(f'=====================================\nТовар добавлен!\nНазвание: {self.name}\nЦена: {self.amount}\nКоличество: {self.count}\n=====================================')
       
     def find_product_models(self):
-        print(f'=====================================\nID: {self.id}\nНазвание: {self.name}\nЦена: {self.amount}\nКоличество: {self.count}\n=====================================')
+        print(f'===========================\nID: {self.id}\nНазвание: {self.name}\nЦена: {self.amount}\nКоличество: {self.count}\n===========================')
+    

@@ -1,4 +1,4 @@
-from logic import add_product, find_product
+from logic import add_product, find_product, show_all
 from database import create_table
 while True:
     try:
@@ -17,6 +17,8 @@ while True:
             add_product()
         elif choice == 2:
             find_product()
+        elif choice == 3:
+            show_all()
         elif choice == 7:
             print('Программа завершена!')
             exit()
