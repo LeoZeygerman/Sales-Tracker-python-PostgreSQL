@@ -1,4 +1,5 @@
 import psycopg2
+from models import Product
 con = psycopg2.connect(
     host = 'localhost',
     database = 'sales-tracker',
@@ -13,7 +14,7 @@ cur.execute('''CREATE EXTENSION IF NOT EXISTS pgcrypto''')
 def create_table():
     cur.execute('''CREATE TABLE IF NOT EXISTS product(
         product_id BIGSERIAL PRIMARY KEY,
-        name VATCHAT(50),
+        name VARCHAR(50),
         amount INTEGER,
         count INTEGER)''')
     
@@ -23,4 +24,13 @@ def create_table():
         count INTEGER)''')
     
 def add_product_base(name, amount, count):
-    cur.execute('''INSERT INTO product(name, amount, count) VALUES (%s,%s,%s)''', (name, amount, count))
+    cur.execute('''INSERT INTO product(name, amount, count) VALUES (%s,%s,%s)''', (name, amount, count) )
+    cur.execute('''SELECT * FROM product''')
+    for row in cur:
+        products = Product(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )
+    return products

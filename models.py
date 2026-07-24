@@ -6,4 +6,4 @@ class Product:
         self.count = count
         
     def add_product_models(self):
-        print(f'Название: {self.name}\nЦена: {self.amount}\nКоличество: {self.count}')
+        print(f'=====================================\nТовар добавлен!\nНазвание: {self.name}\nЦена: {self.amount}\nКоличество: {self.count}\n=====================================')
