@@ -34,3 +34,25 @@ def add_product_base(name, amount, count):
             row[3]
         )
     return products
+
+def find_by_id(product_id):
+    cur.execute('''SELECT * FROM product WHERE product_id = %s''', (product_id,))
+    for row in cur:
+        products = Product(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )
+    return products            
+
+def find_by_name(product_name):
+    cur.execute('''SELECT * FROM product WHERE LOWER(name) = LOWER(%s)''', (product_name,))
+    for row in cur:
+        products = Product(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )
+    return products            
