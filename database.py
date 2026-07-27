@@ -80,3 +80,9 @@ def change_product_base(product_id,type,count):
             row[2]
         )
     return result
+
+def update_count_delete(product_id, count):
+    cur.execute('''UPDATE product SET count = count - %s WHERE product_id = %s AND count >= %s''',(count, product_id, count))
+    
+def update_count_add(product_id, count):
+    cur.execute('''UPDATE product SET count = count + %s WHERE product_id = %s''',(count, product_id))

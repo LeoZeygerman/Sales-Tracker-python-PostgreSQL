@@ -1,4 +1,4 @@
-from database import add_product_base, find_by_id, find_by_name, show_all_base, change_product_base
+from database import add_product_base, find_by_id, find_by_name, show_all_base, change_product_base, update_count_add, update_count_delete
 from models import Product, Track
 def add_product():
     name = input('Введите название продукта: ')
@@ -36,8 +36,10 @@ def change_product():
         count = int(input('Введите количество проданного товара: '))
         product = change_product_base(product_id, product_type, count)
         product.show_changes()
+        update_count_delete(product_id, count)
     elif choice == 2:
         product_type = 'Пополнение'
         count = int(input('Введите количество пополненного товара: '))
         product = change_product_base(product_id, product_type, count)
         product.show_changes()
+        update_count_add(product_id, count)
