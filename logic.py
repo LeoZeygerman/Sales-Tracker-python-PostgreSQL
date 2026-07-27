@@ -1,5 +1,5 @@
-from database import add_product_base, find_by_id, find_by_name, show_all_base, change_product_base, update_count_add, update_count_delete,delete_product_base
-from models import Product, Track
+from database import add_product_base, find_by_id, find_by_name, show_all_base, change_product_base, update_count_add, update_count_delete,delete_product_base, show_history_base
+from models import Product, Track, Track_Product
 def add_product():
     name = input('Введите название продукта: ')
     amount = int(input('Введите цену продукта: '))
@@ -48,3 +48,8 @@ def delete_product():
     product_id = int(input('Введите ID товара, который хотите удалить: '))
     product = delete_product_base(product_id)
     product.delete_product_models()
+    
+def show_history():
+    product = show_history_base()
+    for products in product:
+        products.show_history_models()

@@ -1,5 +1,5 @@
 import psycopg2
-from models import Product, Track
+from models import Product, Track, Track_Product
 con = psycopg2.connect(
     host = 'localhost',
     database = 'sales-tracker',
@@ -98,3 +98,16 @@ def delete_product_base(product_id):
         )
     cur.execute('''DELETE FROM product WHERE product_id = %s''',(product_id,))
     return products
+
+def show_history_base():
+    cur.execute('''SELECT name, type, tracker.count, amount FROM product JOIN tracker ON product.product_id = tracker.product_id''')
+    result = []
+    for row in cur:
+        total = Track_Product(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )
+        result.append(total)
+    return result

@@ -1,4 +1,4 @@
-from logic import add_product, find_product, show_all, change_product, delete_product
+from logic import add_product, find_product, show_all, change_product, delete_product,show_history
 from database import create_table
 while True:
     try:
@@ -23,6 +23,8 @@ while True:
             change_product()
         elif choice == 5:
             delete_product()
+        elif choice == 6:
+            show_history()
         elif choice == 7:
             print('Программа завершена!')
             exit()
