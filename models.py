@@ -11,6 +11,8 @@ class Product:
     def find_product_models(self):
         print(f'===========================\nID: {self.id}\nНазвание: {self.name}\nЦена: {self.amount}\nКоличество: {self.count}\n===========================')
     
+    def delete_product_models(self):
+        print(f'Товар {self.name} успешно удален!')
 class Track:
     def __init__(self, id, type, count):
         self.id = id

@@ -86,3 +86,15 @@ def update_count_delete(product_id, count):
     
 def update_count_add(product_id, count):
     cur.execute('''UPDATE product SET count = count + %s WHERE product_id = %s''',(count, product_id))
+    
+def delete_product_base(product_id):
+    cur.execute('''SELECT * FROM product WHERE product_id = %s''', (product_id,))
+    for row in cur:
+        products = Product(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )
+    cur.execute('''DELETE FROM product WHERE product_id = %s''',(product_id,))
+    return products
