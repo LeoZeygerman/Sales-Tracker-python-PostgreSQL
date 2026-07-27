@@ -1,5 +1,5 @@
-from database import add_product_base, find_by_id, find_by_name, show_all_base
-from models import Product
+from database import add_product_base, find_by_id, find_by_name, show_all_base, change_product_base
+from models import Product, Track
 def add_product():
     name = input('Введите название продукта: ')
     amount = int(input('Введите цену продукта: '))
@@ -26,3 +26,18 @@ def show_all():
     product = show_all_base()
     for products in product:
         products.find_product_models()
+        
+def change_product():
+    product_id = int(input('Введите ID товара: '))
+    print(f'1.Добавить продажу товара\n2.Добавить пополнение товара')
+    choice = int(input('Ваш выбор: '))
+    if choice == 1:
+        product_type = 'Продажа'
+        count = int(input('Введите количество проданного товара: '))
+        product = change_product_base(product_id, product_type, count)
+        product.show_changes()
+    elif choice == 2:
+        product_type = 'Пополнение'
+        count = int(input('Введите количество пополненного товара: '))
+        product = change_product_base(product_id, product_type, count)
+        product.show_changes()

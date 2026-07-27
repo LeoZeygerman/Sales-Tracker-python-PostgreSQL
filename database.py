@@ -1,5 +1,5 @@
 import psycopg2
-from models import Product
+from models import Product, Track
 con = psycopg2.connect(
     host = 'localhost',
     database = 'sales-tracker',
@@ -69,3 +69,14 @@ def show_all_base():
         )
         products.append(product)
     return products
+
+def change_product_base(product_id,type,count):
+    cur.execute('''INSERT INTO tracker VALUES(%s,%s,%s)''', (product_id, type, count))
+    cur.execute('''SELECT * FROM tracker WHERE product_id = %s''', (product_id,))
+    for row in cur:
+        result = Track(
+            row[0],
+            row[1],
+            row[2]
+        )
+    return result
